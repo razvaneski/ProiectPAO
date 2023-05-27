@@ -11,7 +11,16 @@ public final class Customer {
     private String email, phone;
     private String address;
 
-    public Customer(int customerId, String firstName, String lastName, String CNP, Date birthDate, String email, String phone, String address) {
+    public Customer(
+            int customerId,
+            String firstName,
+            String lastName,
+            String CNP,
+            Date birthDate,
+            String email,
+            String phone,
+            String address
+    ) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.lastName = lastName;
