@@ -1,5 +1,5 @@
-import bank.account.Account;
-import bank.db.AccountDb;
+import bank.account.*;
+import bank.db.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,12 +15,28 @@ public class Main {
 
             return DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e);
             return null;
         }
     }
     public static void main(String[] args) {
-        AccountDb accountDb = new AccountDb(getConnection());
-        Account account = new Account("RO123", "INGB", 1000, "Gigel", 1);
+        SavingsAccountDb accountDb = new SavingsAccountDb(getConnection());
+        SavingsAccount account = new SavingsAccount("Gigel", 1, 1);
+        accountDb.create(account);
+        List<SavingsAccount> accounts = accountDb.read();
+        for (SavingsAccount a : accounts) {
+            System.out.println(a);
+        }
+        account.setAmount(100);
+        accountDb.update(account);
+        accounts = accountDb.read();
+        for (SavingsAccount a : accounts) {
+            System.out.println(a);
+        }
+        accountDb.delete(account);
+        accounts = accountDb.read();
+        for (SavingsAccount a : accounts) {
+            System.out.println(a);
+        }
     }
 }

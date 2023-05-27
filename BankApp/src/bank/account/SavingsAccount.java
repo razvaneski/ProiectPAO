@@ -39,7 +39,7 @@ public class SavingsAccount extends Account{
         super(in);
         this.startDate = in.getDate("startDate");
         this.endDate = in.getDate("endDate");
-        this.interestRate = in.getInt("interest");
+        this.interestRate = in.getInt("interestRate");
     }
 
     public Date getStartDate() {
@@ -48,7 +48,7 @@ public class SavingsAccount extends Account{
     public Date getEndDate() {
         return endDate;
     }
-    public int getInterest() {
+    public int getInterestRate() {
         return interestRate;
     }
 }

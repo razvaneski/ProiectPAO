@@ -4,7 +4,7 @@ import java.util.*;
 import bank.account.*;
 import java.sql.*;
 public final class AccountDb {
-    private Connection connection;
+    private final Connection connection;
     public AccountDb(Connection connection) {
         this.connection = connection;
     }
@@ -21,7 +21,7 @@ public final class AccountDb {
             preparedStmt.execute();
             preparedStmt.close();
         }catch (Exception e){
-            System.out.println(e.toString());
+            System.out.println(e);
         }
     }
     public List<Account> read() {
@@ -35,7 +35,7 @@ public final class AccountDb {
             }
             statement.close();
         } catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
         return accounts;
     }
@@ -51,7 +51,7 @@ public final class AccountDb {
             preparedStmt.executeUpdate();
             preparedStmt.close();
         }catch (Exception e){
-            System.out.println(e.toString());
+            System.out.println(e);
         }
     }
     public void delete(Account account){
