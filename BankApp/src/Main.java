@@ -21,9 +21,6 @@ public class Main {
     }
     public static void main(String[] args) {
         AccountDb accountDb = new AccountDb(getConnection());
-        List<Account> accounts = accountDb.read();
-        for (Account account : accounts) {
-            System.out.println(account);
-        }
+        Account account = new Account("RO123", "INGB", 1000, "Gigel", 1);
     }
 }
