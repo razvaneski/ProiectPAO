@@ -4,16 +4,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Card {
-    private final int cardId, CVV;
-    private String number, name;
+    private final int CVV;
+    private String number;
     private String IBAN;
     private final Date expirationDate;
-    static private final Set<String> usedNumbers = new HashSet<>();
+    private static Set<String> usedNumbers = new HashSet<>();
+    private static void setUsedNumbers(Set<String> usedNumbers) {
+        Card.usedNumbers = usedNumbers;
+    }
 
-    public Card(int cardId, String IBAN, String name) {
-        this.cardId = cardId;
+    public Card(String IBAN) {
         this.IBAN = IBAN;
-        this.name = name;
         this.number = this.generateCardNumber();
 
         while(usedNumbers.contains(this.number))
@@ -28,11 +29,11 @@ public class Card {
         this.expirationDate = c.getTime();
     }
 
-    public void read(Scanner in){
+    public void read(Scanner in) {
+        // TODO
         System.out.println("IBAN: ");
         this.IBAN = in.nextLine();
         System.out.println("Name: ");
-        this.name = in.nextLine();
     }
 
     private String generateCardNumber(){
@@ -46,14 +47,8 @@ public class Card {
         return 100 + rand.nextInt(899);
     }
 
-    public int getCardId() {
-        return cardId;
-    }
     public String getNumber() {
         return number;
-    }
-    public String getName() {
-        return name;
     }
     public int getCVV() {
         return CVV;

@@ -2,7 +2,6 @@ package bank.account;
 
 import bank.card.*;
 import bank.transaction.*;
-import bank.factories.CardFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +14,6 @@ public class Account {
     private String name;
     private int customerId;
     private List<Card> cards = new ArrayList<>();
-    private final CardFactory cardFactory = new CardFactory();
 
     public Account(String IBAN, String swift, double amount, String name, int customerId){
         this.IBAN = IBAN;
@@ -49,8 +47,12 @@ public class Account {
         return transactions;
     }
 
-    public void addCard(String name){
-        Card newCard = cardFactory.addCard(this.IBAN, name);
+    public void addCreditCard(String name){
+        CreditCard newCard = new CreditCard(this.IBAN);
+        cards.add(newCard);
+    }
+    public void addDebitCard(String name){
+        DebitCard newCard = new DebitCard(this.IBAN);
         cards.add(newCard);
     }
 

@@ -30,8 +30,8 @@ public final class AccountDb {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery("SELECT * FROM Accounts");
             while (result.next()) {
-                Account current = new Account(result);
-                accounts.add(current);
+                Account newAccount = new Account(result);
+                accounts.add(newAccount);
             }
             statement.close();
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public final class AccountDb {
         return accounts;
     }
     public void update(Account newAccount){
-        try{
+        try {
             String query = "UPDATE Accounts SET amount = ?, name = ?, customerId = ? WHERE IBAN = ? AND swift = ?";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setDouble(1, newAccount.getAmount());
@@ -50,19 +50,19 @@ public final class AccountDb {
             preparedStmt.setString(5, newAccount.getSwift());
             preparedStmt.executeUpdate();
             preparedStmt.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
-    public void delete(Account account){
-        try{
+    public void delete(Account account) {
+        try {
             String query = "DELETE FROM Accounts WHERE IBAN = ?";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, account.getIBAN());
             preparedStmt.execute();
             preparedStmt.close();
-        }catch (Exception e){
-            System.out.println(e.toString());
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }

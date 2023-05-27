@@ -1,10 +1,17 @@
 package bank.customer;
 
+import java.sql.ResultSet;
 import java.util.*;
 import bank.account.*;
 import bank.transaction.*;
+import java.sql.SQLException;
 
 public final class Customer {
+    private static int customerIdCounter = 0;
+    public static void setCustomerIdCounter(int customerIdCounter) {
+        Customer.customerIdCounter = customerIdCounter;
+    }
+
     private final int customerId;
     private String firstName, lastName, CNP;
     private Date birthDate;
@@ -12,7 +19,6 @@ public final class Customer {
     private String address;
 
     public Customer(
-            int customerId,
             String firstName,
             String lastName,
             String CNP,
@@ -21,7 +27,7 @@ public final class Customer {
             String phone,
             String address
     ) {
-        this.customerId = customerId;
+        this.customerId = customerIdCounter++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.CNP = CNP;
@@ -29,6 +35,17 @@ public final class Customer {
         this.email = email;
         this.phone = phone;
         this.address = address;
+    }
+
+    public Customer(ResultSet in) throws SQLException {
+        this.customerId = in.getInt("customerId");
+        this.firstName = in.getString("firstName");
+        this.lastName = in.getString("lastName");
+        this.CNP = in.getString("CNP");
+        this.birthDate = in.getDate("birthDate");
+        this.email = in.getString("email");
+        this.phone = in.getString("phone");
+        this.address = in.getString("address");
     }
 
     public List<Account> filterAccounts(List<Account> allAccounts){
