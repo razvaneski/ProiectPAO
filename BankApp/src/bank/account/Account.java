@@ -3,6 +3,9 @@ package bank.account;
 import bank.card.*;
 import bank.transaction.*;
 import bank.factories.CardFactory;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Account {
@@ -28,6 +31,14 @@ public class Account {
         this.amount = 0;
         this.name = name;
         this.customerId = customerId;
+    }
+
+    public Account(ResultSet in) throws SQLException {
+        this.IBAN = in.getString("IBAN");
+        this.swift = in.getString("swift");
+        this.amount = in.getDouble("amount");
+        this.name = in.getString("name");
+        this.customerId = in.getInt("customerId");
     }
 
     public List<Transaction> filterTransactions(List<Transaction> allTransactions){
@@ -71,5 +82,17 @@ public class Account {
     }
     public List<Card> getCards() {
         return cards;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "IBAN='" + IBAN + '\'' +
+                ", swift='" + swift + '\'' +
+                ", amount=" + amount +
+                ", name='" + name + '\'' +
+                ", customerId=" + customerId +
+                ", cards=" + cards +
+                '}';
     }
 }
