@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public final class AuditService {
     FileWriter writer;
-    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public void logAction(String action) throws IOException {
         writer.append(action);
         writer.append(",");
