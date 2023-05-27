@@ -5,7 +5,7 @@ import bank.transaction.*;
 import bank.factories.CardFactory;
 import java.util.*;
 
-public final class Account {
+public class Account {
     private String IBAN;
     private String swift;
     private double amount;
@@ -22,8 +22,8 @@ public final class Account {
         this.customerId = customerId;
     }
 
-    public Account(String name, int customerId, int uniqueId) {
-        this.IBAN = this.generateIBAN(uniqueId, "ING");
+    public Account(String name, int customerId, int id) {
+        this.IBAN = this.generateIBAN(id, "ING");
         this.swift = this.generateSwift("ING");
         this.amount = 0;
         this.name = name;
