@@ -1,6 +1,5 @@
 package bank.card;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -37,9 +36,9 @@ public class Card {
     }
 
     private String generateCardNumber(){
-        byte[] array = new byte[16];
-        new Random().nextBytes(array);
-        return new String(array, StandardCharsets.UTF_8);
+        byte[] arr = new byte[16];
+        new Random().nextBytes(arr);
+        return new String(arr, StandardCharsets.UTF_8);
     }
 
     private int generateCardCVV(){
