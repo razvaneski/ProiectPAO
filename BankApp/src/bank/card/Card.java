@@ -4,7 +4,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-public final class Card{
+public class Card {
     private final int cardId, CVV;
     private String number, name;
     private String IBAN;
@@ -17,15 +17,12 @@ public final class Card{
         this.name = name;
         this.number = this.generateCardNumber();
 
-        /* Generate Card Number */
         while(usedNumbers.contains(this.number))
             this.number = this.generateCardNumber();
         usedNumbers.add(this.number);
 
-        /* Generate CVV */
         this.CVV = this.generateCardCVV();
 
-        /* Generate expiration date */
         Calendar c = Calendar.getInstance();
         c.setTime(new Date());
         c.add(Calendar.YEAR, 3);
@@ -53,23 +50,18 @@ public final class Card{
     public int getCardId() {
         return cardId;
     }
-
     public String getNumber() {
         return number;
     }
-
     public String getName() {
         return name;
     }
-
     public int getCVV() {
         return CVV;
     }
-
     public String getIBAN() {
         return IBAN;
     }
-
     public Date getExpirationDate() {
         return expirationDate;
     }
