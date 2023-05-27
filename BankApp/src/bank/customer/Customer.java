@@ -7,12 +7,6 @@ import bank.transaction.*;
 import java.sql.SQLException;
 
 public final class Customer {
-    private static int customerIdCounter = 0;
-    public static void setCustomerIdCounter(int customerIdCounter) {
-        Customer.customerIdCounter = customerIdCounter;
-    }
-
-    private final int customerId;
     private String firstName, lastName, CNP;
     private Date birthDate;
     private String email, phone;
@@ -27,7 +21,6 @@ public final class Customer {
             String phone,
             String address
     ) {
-        this.customerId = customerIdCounter++;
         this.firstName = firstName;
         this.lastName = lastName;
         this.CNP = CNP;
@@ -38,7 +31,6 @@ public final class Customer {
     }
 
     public Customer(ResultSet in) throws SQLException {
-        this.customerId = in.getInt("customerId");
         this.firstName = in.getString("firstName");
         this.lastName = in.getString("lastName");
         this.CNP = in.getString("CNP");
@@ -48,25 +40,6 @@ public final class Customer {
         this.address = in.getString("address");
     }
 
-    public List<Account> filterAccounts(List<Account> allAccounts){
-        var accounts = new ArrayList<Account>();
-        for(var account: allAccounts)
-            if(account.getCustomerId() == this.getCustomerId())
-                accounts.add(account);
-        return accounts;
-    }
-
-    public List<Transaction> filterTransactions(List<Account> allAccounts, List<Transaction> allTransactions){
-        var transactions = new ArrayList<Transaction>();
-        var accounts = this.filterAccounts(allAccounts);
-        for(var account: accounts)
-            transactions.addAll(account.filterTransactions(allTransactions));
-        return transactions;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
     public String getFirstName() {
         return firstName;
     }

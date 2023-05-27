@@ -11,7 +11,6 @@ public class Account {
     private String IBAN;
     private String swift;
     private double amount;
-    private String name;
     private int customerId;
     private List<Card> cards = new ArrayList<>();
 
@@ -19,7 +18,6 @@ public class Account {
         this.IBAN = IBAN;
         this.swift = swift;
         this.amount = amount;
-        this.name = name;
         this.customerId = customerId;
     }
 
@@ -27,7 +25,6 @@ public class Account {
         this.IBAN = this.generateIBAN(id, "ING");
         this.swift = this.generateSwift("ING");
         this.amount = 0;
-        this.name = name;
         this.customerId = customerId;
     }
 
@@ -35,7 +32,6 @@ public class Account {
         this.IBAN = in.getString("IBAN");
         this.swift = in.getString("swift");
         this.amount = in.getDouble("amount");
-        this.name = in.getString("name");
         this.customerId = in.getInt("customerId");
     }
 
@@ -64,9 +60,6 @@ public class Account {
         return "SWIFT" + bank + "B";
     }
 
-    public String getName() {
-        return name;
-    }
     public int getCustomerId() {
         return customerId;
     }
@@ -92,7 +85,6 @@ public class Account {
                 "IBAN='" + IBAN + '\'' +
                 ", swift='" + swift + '\'' +
                 ", amount=" + amount +
-                ", name='" + name + '\'' +
                 ", customerId=" + customerId +
                 ", cards=" + cards +
                 '}';
