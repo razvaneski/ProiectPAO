@@ -1,8 +1,6 @@
-package Models.Services;
+package com.bank.services;
 
-import Models.Account.Account;
-
-import java.util.List;
+import com.bank.accounts.Account;
 
 public final class AccountsService extends BaseService<Account> {
     private static AccountsService instance = null;

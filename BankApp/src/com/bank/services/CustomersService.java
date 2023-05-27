@@ -1,6 +1,7 @@
-package Models.Services;
+package com.bank.services;
 
-import Models.Customer;
+import com.bank.Customer;
+
 public class CustomersService extends BaseService<Customer>{
     private static CustomersService instance = null;
 

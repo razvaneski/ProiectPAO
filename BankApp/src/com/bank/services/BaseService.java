@@ -1,4 +1,4 @@
-package Models.Services;
+package com.bank.services;
 
 import java.util.List;
 public abstract class BaseService<T> {

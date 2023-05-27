@@ -1,7 +1,6 @@
-package Models.Card;
+package com.bank.cards;
 
-import Models.Account.Account;
-import Models.Account.CurrentAccount;
+import com.bank.accounts.CurrentAccount;
 
 public abstract class Card {
     protected static int idCount = 0;

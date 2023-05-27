@@ -1,7 +1,6 @@
-package Models.Card;
+package com.bank.cards;
 
-import Models.Account.CurrentAccount;
-import Models.Card.Card;
+import com.bank.accounts.CurrentAccount;
 
 public final class CreditCard extends Card {
     private double creditLimit;

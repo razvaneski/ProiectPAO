@@ -1,4 +1,4 @@
-package Models;
+package com.bank;
 
 public final class Customer {
     private static int idCount = 0;

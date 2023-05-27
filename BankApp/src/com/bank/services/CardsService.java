@@ -1,6 +1,6 @@
-package Models.Services;
+package com.bank.services;
 
-import Models.Card.Card;
+import com.bank.cards.Card;
 public class CardsService extends BaseService<Card>{
     private static CardsService instance = null;
 

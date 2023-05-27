@@ -1,7 +1,6 @@
-package Models.Account;
+package com.bank.accounts;
 
-import Models.Account.Account;
-import Models.Customer;
+import com.bank.Customer;
 
 public final class SavingsAccount extends Account {
     private double interestRate;

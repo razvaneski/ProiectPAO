@@ -1,4 +1,4 @@
-package Models.Services;
+package com.bank.services;
 
 public class TransactionsService {
     private static TransactionsService instance = null;

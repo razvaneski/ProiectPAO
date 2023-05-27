@@ -1,6 +1,6 @@
-package Models.Account;
+package com.bank.accounts;
 
-import Models.Customer;
+import com.bank.Customer;
 
 public abstract class Account {
     protected static int idCount = 0;
