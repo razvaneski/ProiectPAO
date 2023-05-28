@@ -18,7 +18,7 @@ public class TransactionDb {
             statement.setString(3, transaction.getToIBAN());
             statement.setDouble(4, transaction.getAmount());
             statement.setString(5, transaction.getDescription());
-            statement.setString(4, (new SimpleDateFormat("yyyy-MM-dd")).format(transaction.getTransactionDate()));
+            statement.setString(6, (new SimpleDateFormat("yyyy-MM-dd")).format(transaction.getTransactionDate()));
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -29,10 +29,11 @@ public class TransactionDb {
         List<Transaction> transactions = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM Transactions");
+            ResultSet result = statement.executeQuery("SELECT * FROM Transactions ORDER BY transactionId ASC");
             while (result.next()) {
                 Transaction current = new Transaction(result);
                 transactions.add(current);
+                Transaction.setIdCount(current.getTransactionId() + 1);
             }
             statement.close();
         } catch (Exception e) {

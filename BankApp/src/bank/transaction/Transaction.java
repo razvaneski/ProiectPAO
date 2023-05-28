@@ -12,7 +12,7 @@ public final class Transaction {
     }
     private final int transactionId;
     final private String fromIBAN, toIBAN;
-    final private double amount;
+    private double amount;
     final private String description;
     final private Date transactionDate;
 
@@ -36,6 +36,18 @@ public final class Transaction {
         this.transactionDate = in.getDate("transactionDate");
     }
 
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionId=" + transactionId +
+                ", fromIBAN='" + fromIBAN + '\'' +
+                ", toIBAN='" + toIBAN + '\'' +
+                ", amount=" + amount +
+                ", description='" + description + '\'' +
+                ", transactionDate=" + transactionDate +
+                '}';
+    }
+
     public int getTransactionId() {
         return transactionId;
     }
@@ -47,6 +59,9 @@ public final class Transaction {
     }
     public double getAmount() {
         return amount;
+    }
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
     public String getDescription() {
         return description;
