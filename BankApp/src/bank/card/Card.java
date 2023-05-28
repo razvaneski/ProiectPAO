@@ -8,7 +8,7 @@ public class Card {
     private String number;
     private String IBAN;
     private final Date expirationDate;
-    private static Set<String> usedNumbers = new HashSet<>();
+    private static Set<String> usedNumbers = new HashSet<>(); // colectie hashSet
     private static void setUsedNumbers(Set<String> usedNumbers) {
         Card.usedNumbers = usedNumbers;
     }
