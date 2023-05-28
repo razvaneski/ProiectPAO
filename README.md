@@ -18,5 +18,4 @@
 - Account: createAccount, closeAccount, showAccountInfo
 - Card: createCard, closeCard, markCardAsStolen
 - Transaction: executeTransaction, revertTransaction, showTransactionInfo
-- Loan: createLoan, closeLoan, showLoanInfo
 - Bank statement: createBankStatement
