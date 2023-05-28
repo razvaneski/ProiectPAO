@@ -29,7 +29,7 @@ public class SavingsAccountDb {
 
     public void update(SavingsAccount newSavingsAccount) {
         try {
-            String query = "UPDATE SavingsAccounts SET amount = ?, customerId = ?, startDate = ?, endDate = ?, interestRate = ? WHERE IBAN = ? AND swift = ?";
+            String query = "UPDATE SavingsAccounts SET amount = ?, customerId = ?, startDate = ?, endDate = ?, interestRate = ? WHERE IBAN = ?";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setDouble(1, newSavingsAccount.getAmount());
             preparedStmt.setInt(2, newSavingsAccount.getCustomerId());
@@ -37,7 +37,6 @@ public class SavingsAccountDb {
             preparedStmt.setString(4, (new SimpleDateFormat("yyyy-MM-dd")).format(newSavingsAccount.getEndDate()));
             preparedStmt.setInt(5, newSavingsAccount.getInterestRate());
             preparedStmt.setString(6, newSavingsAccount.getIBAN());
-            preparedStmt.setString(7, newSavingsAccount.getSwift());
             preparedStmt.executeUpdate();
             preparedStmt.close();
         }catch (Exception e){
@@ -47,7 +46,7 @@ public class SavingsAccountDb {
 
     public void create(SavingsAccount savingsAccount) {
         try {
-            String query = "INSERT INTO SavingsAccounts (IBAN, swift, amount, customerId, startDate, endDate, interestRate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO SavingsAccounts (IBAN, swift, amount, customerId, startDate, endDate, interestRate) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, savingsAccount.getIBAN());
             preparedStmt.setString(2, savingsAccount.getSwift());

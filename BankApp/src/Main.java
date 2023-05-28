@@ -18,23 +18,14 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        AccountDb accountDb = new AccountDb(getConnection());
-        Account account = new Account(1);
-        accountDb.create(account);
-        List<Account> accounts = accountDb.read();
-        for (Account a : accounts) {
-            System.out.println(a);
-        }
-        account.setAmount(1000);
-        accountDb.update(account);
-        accounts = accountDb.read();
-        for (Account a : accounts) {
-            System.out.println(a);
-        }
-        accountDb.delete(account);
-        accounts = accountDb.read();
-        for (Account a : accounts) {
-            System.out.println(a);
-        }
+        SavingsAccountDb savingsAccountDb = new SavingsAccountDb(getConnection());
+        SavingsAccount savingsAccount = new SavingsAccount(1);
+        savingsAccountDb.create(savingsAccount);
+        savingsAccountDb.read().forEach(System.out::println);
+        savingsAccount.setAmount(1000);
+        savingsAccountDb.update(savingsAccount);
+        savingsAccountDb.read().forEach(System.out::println);
+        savingsAccountDb.delete(savingsAccount);
+        savingsAccountDb.read().forEach(System.out::println);
     }
 }

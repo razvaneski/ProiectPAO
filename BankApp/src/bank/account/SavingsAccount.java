@@ -26,6 +26,14 @@ public class SavingsAccount extends Account{
         this.interestRate = in.getInt("interestRate");
     }
 
+    @Override
+    public String toString() {
+        return "Savings" + super.toString() +
+                " start: " + this.startDate +
+                ", end: " + this.endDate +
+                ", interest: " + this.interestRate;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
