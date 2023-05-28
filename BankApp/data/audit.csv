@@ -1,3 +1,5 @@
-getAccountsIBAN,2023-05-28 20:03:29
-createAccount,2023-05-28 20:03:52
-getAccountsIBAN,2023-05-28 20:04:00
+createTransaction,2023-05-28 20:42:36
+getTransactions,2023-05-28 20:42:49
+getCustomer,2023-05-28 20:49:12
+getAccountsIBAN,2023-05-28 20:49:28
+getAccountInfo,2023-05-28 20:49:32

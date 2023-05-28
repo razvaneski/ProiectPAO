@@ -160,7 +160,19 @@ public class AppService {
                 }
             }
             if (account == null) {
-                System.out.println("Account not found!");
+                SavingsAccount savingsAccount = null;
+                List<SavingsAccount> savingsAccounts = dataService.getSavingsAccounts();
+                for (SavingsAccount a : savingsAccounts) {
+                    if (a.getIBAN().equals(IBAN)) {
+                        savingsAccount = a;
+                        break;
+                    }
+                }
+                if (savingsAccount == null) {
+                    System.out.println("Account not found!");
+                    return;
+                }
+                System.out.println(savingsAccount);
                 return;
             }
             System.out.println(account);
@@ -187,8 +199,13 @@ public class AppService {
                 System.out.println("Customer not found!");
                 return;
             }
-            Account account = new Account(in);
-            dataService.addAccount(account);
+            if (type == 1) {
+                Account account = new Account(in);
+                dataService.addAccount(account);
+            } else {
+                SavingsAccount savingsAccount = new SavingsAccount(in);
+                dataService.addAccount(savingsAccount);
+            }
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -17,7 +17,7 @@ public final class AuditService {
     }
     public AuditService() {
         try {
-            this.writer = new FileWriter("data/audit.csv");
+            this.writer = new FileWriter("data/audit.csv", true);
         } catch (IOException e) {
             System.out.println(e.toString());
         }

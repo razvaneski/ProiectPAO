@@ -41,13 +41,14 @@ public final class Transaction {
     public Transaction(Scanner in) {
         this.transactionId = idCount++;
         System.out.println("IBAN plecare: ");
-        this.fromIBAN = in.next();
+        this.fromIBAN = in.nextLine();
         System.out.println("IBAN destinatie: ");
-        this.toIBAN = in.next();
+        this.toIBAN = in.nextLine();
         System.out.println("Suma: ");
         this.amount = in.nextDouble();
+        in.nextLine();
         System.out.println("Descriere: ");
-        this.description = in.next();
+        this.description = in.nextLine();
         this.transactionDate = new Date();
     }
 
