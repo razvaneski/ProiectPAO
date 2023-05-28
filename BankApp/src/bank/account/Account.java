@@ -14,15 +14,8 @@ public class Account {
     private int customerId;
     private List<Card> cards = new ArrayList<>();
 
-    public Account(String IBAN, String swift, double amount, String name, int customerId){
-        this.IBAN = IBAN;
-        this.swift = swift;
-        this.amount = amount;
-        this.customerId = customerId;
-    }
-
-    public Account(String name, int customerId, int id) {
-        this.IBAN = this.generateIBAN(id, "ING");
+    public Account(int customerId) {
+        this.IBAN = this.generateIBAN(customerId, "ING");
         this.swift = this.generateSwift("ING");
         this.amount = 0;
         this.customerId = customerId;

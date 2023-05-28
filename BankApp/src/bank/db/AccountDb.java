@@ -10,8 +10,8 @@ public final class AccountDb {
     }
 
     public void create(Account account){
-        try{
-            String query = "INSERT INTO Accounts (IBAN, swift, amount, customerId) VALUES (?, ?, ?, ?, ?)";
+        try {
+            String query = "INSERT INTO Accounts (IBAN, swift, amount, customerId) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, account.getIBAN());
             preparedStmt.setString(2, account.getSwift());
@@ -19,7 +19,7 @@ public final class AccountDb {
             preparedStmt.setInt(4, account.getCustomerId());
             preparedStmt.execute();
             preparedStmt.close();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -40,12 +40,10 @@ public final class AccountDb {
     }
     public void update(Account newAccount){
         try {
-            String query = "UPDATE Accounts SET amount = ?, customerId = ? WHERE IBAN = ? AND swift = ?";
+            String query = "UPDATE Accounts SET amount = ? WHERE IBAN = ?";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setDouble(1, newAccount.getAmount());
-            preparedStmt.setInt(2, newAccount.getCustomerId());
-            preparedStmt.setString(3, newAccount.getIBAN());
-            preparedStmt.setString(4, newAccount.getSwift());
+            preparedStmt.setString(2, newAccount.getIBAN());
             preparedStmt.executeUpdate();
             preparedStmt.close();
         } catch (Exception e) {
