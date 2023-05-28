@@ -1,6 +1,7 @@
 package bank.card;
 
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.util.*;
 
 public class Card {
@@ -29,11 +30,20 @@ public class Card {
         this.expirationDate = c.getTime();
     }
 
-    public void read(Scanner in) {
-        // TODO
+    public Card(Scanner in) {
         System.out.println("IBAN: ");
         this.IBAN = in.nextLine();
-        System.out.println("Name: ");
+        this.number = this.generateCardNumber();
+
+        while(usedNumbers.contains(this.number))
+            this.number = this.generateCardNumber();
+        usedNumbers.add(this.number);
+
+        this.CVV = this.generateCardCVV();
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 3);
+        this.expirationDate = c.getTime();
     }
 
     private String generateCardNumber(){

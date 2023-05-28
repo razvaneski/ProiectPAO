@@ -28,6 +28,15 @@ public class Account {
         this.customerId = in.getInt("customerId");
     }
 
+    public Account(Scanner in) {
+        System.out.println("ID client: ");
+        int customerId = in.nextInt();
+        this.IBAN = this.generateIBAN(customerId, "ING");
+        this.swift = this.generateSwift("ING");
+        this.amount = 0;
+        this.customerId = customerId;
+    }
+
     public List<Transaction> filterTransactions(List<Transaction> allTransactions){
         List<Transaction> transactions = new ArrayList<>();
         for(var transaction: allTransactions)

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 public class SavingsAccount extends Account{
     private final Date startDate, endDate;
@@ -24,6 +25,16 @@ public class SavingsAccount extends Account{
         this.startDate = in.getDate("startDate");
         this.endDate = in.getDate("endDate");
         this.interestRate = in.getInt("interestRate");
+    }
+
+    public SavingsAccount(Scanner in) {
+        super(in);
+        this.startDate = new Date();
+        this.interestRate = 3;
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.YEAR, 1);
+        this.endDate = c.getTime();
     }
 
     @Override

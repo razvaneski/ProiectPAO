@@ -1,9 +1,9 @@
 package bank.customer;
 
 import java.sql.ResultSet;
+import java.text.ParseException;
 import java.util.*;
-import bank.account.*;
-import bank.transaction.*;
+import java.text.SimpleDateFormat;
 import java.sql.SQLException;
 
 public final class Customer {
@@ -38,6 +38,23 @@ public final class Customer {
         this.email = in.getString("email");
         this.phone = in.getString("phone");
         this.address = in.getString("address");
+    }
+
+    public Customer(Scanner in) throws ParseException {
+        System.out.println("First name: ");
+        this.firstName = in.nextLine();
+        System.out.println("Last name: ");
+        this.lastName = in.nextLine();
+        System.out.println("CNP: ");
+        this.CNP = in.nextLine();
+        System.out.println("Birth Date (yyyy-MM-dd): ");
+        this.birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(in.nextLine());
+        System.out.println("Email: ");
+        this.email = in.nextLine();
+        System.out.println("Phone: ");
+        this.phone = in.nextLine();
+        System.out.println("Address: ");
+        this.address = in.nextLine();
     }
 
     @Override

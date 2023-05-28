@@ -3,7 +3,9 @@ package bank.transaction;
 import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
+import java.util.Scanner;
 
 public final class Transaction {
     private static int idCount = 0;
@@ -34,6 +36,19 @@ public final class Transaction {
         this.amount = in.getDouble("amount");
         this.description = in.getString("description");
         this.transactionDate = in.getDate("transactionDate");
+    }
+
+    public Transaction(Scanner in) {
+        this.transactionId = idCount++;
+        System.out.println("IBAN plecare: ");
+        this.fromIBAN = in.next();
+        System.out.println("IBAN destinatie: ");
+        this.toIBAN = in.next();
+        System.out.println("Suma: ");
+        this.amount = in.nextDouble();
+        System.out.println("Descriere: ");
+        this.description = in.next();
+        this.transactionDate = new Date();
     }
 
     @Override
