@@ -10,7 +10,6 @@
 - Account -> Current account, Savings Account
 - Card -> Credit card, Debit card
 - Transaction
-- Loan
 - Bank statement
 
 #### Actiuni
