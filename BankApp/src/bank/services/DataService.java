@@ -86,6 +86,15 @@ public final class DataService {
             System.out.println(e);
         }
     }
+    public void updateAccount(Account account) {
+        try {
+            dbService.updateAccount(account);
+            this.accounts = dbService.getAccounts();
+            this.savingsAccounts = dbService.getSavingsAccounts();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     public List<Transaction> getTransactions() {
         return this.transactions;

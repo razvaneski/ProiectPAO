@@ -5,19 +5,20 @@ import java.util.List;
 
 public class Main {
     private final static List<String> menuItems = List.of(
-        "create_customer",
-        "get_customer",
-        "update_customer",
-        "delete_customer",
-        "create_account",
-        "get_account",
-        "update_account",
-        "delete_account",
-        "create_card",
-        "get_card",
-        "update_card",
-        "delete_card",
-        "exit"
+        "Create customer",
+        "Get customer",
+        "Update customer",
+        "Delete customer",
+        "Get accounts IBAN (for given CNP)",
+        "Get account info (for given IBAN)",
+        "Create account (for given CNP)",
+        "Update account info (for given IBAN)",
+        "Delete account",
+        "Create transaction",
+        "Get transactions",
+        "Update transaction (for given transaction ID)",
+        "Delete transaction (for given transaction ID)",
+        "Exit"
     );
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -27,48 +28,52 @@ public class Main {
             System.out.println("Choose an option (any letter for available options): ");
             String option = in.nextLine();
             switch (option) {
-                case "0":
+                case "1":
                     appService.createCustomer();
                     break;
-                case "1":
+                case "2":
                     appService.getCustomer();
                     break;
-                case "2":
+                case "3":
                     appService.updateCustomer();
                     break;
-                case "3":
+                case "4":
                     appService.deleteCustomer();
                     break;
-                case "4":
-//                    appService.createAccount();
-                    break;
                 case "5":
-//                    appService.getAccount();
+                    appService.getAccountsIBAN();
                     break;
                 case "6":
-//                    appService.updateAccount();
+                    appService.getAccountInfo();
                     break;
                 case "7":
-//                    appService.deleteAccount();
+                    appService.createAccount();
                     break;
                 case "8":
-//                    appService.createCard();
+                    appService.updateAccount();
                     break;
                 case "9":
-//                    appService.getCard();
+                    appService.deleteAccount();
                     break;
                 case "10":
-//                    appService.updateCard();
+                    appService.createTransaction();
                     break;
                 case "11":
-//                    appService.deleteCard();
+                    appService.getTransactions();
                     break;
                 case "12":
+                    appService.updateTransaction();
+                    break;
+                case "13":
+                    appService.deleteTransaction();
+                    break;
+                case "14":
                     running = false;
                     break;
                 default:
+                    System.out.println("Available options: ");
                     for (int i = 0; i < menuItems.size(); i++) {
-                        System.out.println(i + ". " + menuItems.get(i));
+                        System.out.println(i + 1 + ". " + menuItems.get(i));
                     }
                     break;
             }

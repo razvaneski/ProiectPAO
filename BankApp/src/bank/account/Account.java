@@ -11,30 +11,30 @@ public class Account {
     private String IBAN;
     private String swift;
     private double amount;
-    private int customerId;
+    private String CNP;
     private List<Card> cards = new ArrayList<>();
 
-    public Account(int customerId) {
-        this.IBAN = this.generateIBAN(customerId, "ING");
+    public Account(String CNP) {
+        this.IBAN = this.generateIBAN(CNP, "ING");
         this.swift = this.generateSwift("ING");
         this.amount = 0;
-        this.customerId = customerId;
+        this.CNP = CNP;
     }
 
     public Account(ResultSet in) throws SQLException {
         this.IBAN = in.getString("IBAN");
         this.swift = in.getString("swift");
         this.amount = in.getDouble("amount");
-        this.customerId = in.getInt("customerId");
+        this.CNP = in.getString("CNP");
     }
 
     public Account(Scanner in) {
-        System.out.println("ID client: ");
-        int customerId = in.nextInt();
-        this.IBAN = this.generateIBAN(customerId, "ING");
+        System.out.println("CNP client: ");
+        String CNP = in.nextLine();
+        this.IBAN = this.generateIBAN(CNP, "ING");
         this.swift = this.generateSwift("ING");
         this.amount = 0;
-        this.customerId = customerId;
+        this.CNP = CNP;
     }
 
     public List<Transaction> filterTransactions(List<Transaction> allTransactions){
@@ -54,16 +54,17 @@ public class Account {
         cards.add(newCard);
     }
 
-    private String generateIBAN(int id, String bank){
-        return "RO12" + bank + "B" + id;
+    private String generateIBAN(String CNP, String bank){
+        int random = (int)(Math.random() * 10000);
+        return "RO12" + bank + "B" + CNP + random;
     }
 
     private String generateSwift(String bank) {
         return "SWIFT" + bank + "B";
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public String getCustomerCNP() {
+        return CNP;
     }
     public void setAmount(double amount) {
         this.amount = amount;
@@ -87,7 +88,7 @@ public class Account {
                 "IBAN='" + IBAN + '\'' +
                 ", swift='" + swift + '\'' +
                 ", amount=" + amount +
-                ", customerId=" + customerId +
+                ", CNP=" + CNP +
                 ", cards=" + cards +
                 '}';
     }

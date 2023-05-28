@@ -11,12 +11,12 @@ public final class AccountDb {
 
     public void create(Account account){
         try {
-            String query = "INSERT INTO Accounts (IBAN, swift, amount, customerId) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO Accounts (IBAN, swift, amount, CNP) VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, account.getIBAN());
             preparedStmt.setString(2, account.getSwift());
             preparedStmt.setDouble(3, account.getAmount());
-            preparedStmt.setInt(4, account.getCustomerId());
+            preparedStmt.setString(4, account.getCustomerCNP());
             preparedStmt.execute();
             preparedStmt.close();
         } catch (Exception e) {

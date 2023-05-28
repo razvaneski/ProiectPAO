@@ -10,8 +10,8 @@ public class SavingsAccount extends Account{
     private final Date startDate, endDate;
     private final int interestRate;
 
-    public SavingsAccount(int customerId) {
-        super(customerId);
+    public SavingsAccount(String CNP) {
+        super(CNP);
         this.startDate = new Date();
         this.interestRate = 3;
         Calendar c = Calendar.getInstance();
