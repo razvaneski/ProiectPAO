@@ -40,6 +40,19 @@ public final class Customer {
         this.address = in.getString("address");
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", CNP='" + CNP + '\'' +
+                ", birthDate=" + birthDate +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public String getFirstName() {
         return firstName;
     }

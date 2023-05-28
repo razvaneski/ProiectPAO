@@ -12,7 +12,7 @@ public class CustomerDb{
     }
     public void create(Customer customer) {
         try{
-            String query = "INSERT INTO Customers (firstName, lastName, CNP, birthDate, email, phone, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO Customers (firstName, lastName, CNP, birthDate, email, phone, address) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, customer.getFirstName());
             preparedStmt.setString(2, customer.getLastName());

@@ -1,4 +1,4 @@
-import bank.account.*;
+import bank.customer.*;
 import bank.db.*;
 
 import java.sql.*;
@@ -18,14 +18,26 @@ public class Main {
         }
     }
     public static void main(String[] args) {
-        SavingsAccountDb savingsAccountDb = new SavingsAccountDb(getConnection());
-        SavingsAccount savingsAccount = new SavingsAccount(1);
-        savingsAccountDb.create(savingsAccount);
-        savingsAccountDb.read().forEach(System.out::println);
-        savingsAccount.setAmount(1000);
-        savingsAccountDb.update(savingsAccount);
-        savingsAccountDb.read().forEach(System.out::println);
-        savingsAccountDb.delete(savingsAccount);
-        savingsAccountDb.read().forEach(System.out::println);
+        CustomerDb customerDb = new CustomerDb(getConnection());
+        Customer customer = new Customer(
+                "Ion",
+                "Popescu",
+                "5000609463053",
+                new Date(2000, 6, 9),
+                "ion@popescu.ro",
+                "0712345678",
+                "Str. Popescu nr. 1"
+        );
+        customerDb.create(customer);
+        List<Customer> customers = customerDb.read();
+        for (Customer c : customers) {
+            System.out.println(c);
+        }
+        customer.setFirstName("Gheorghe");
+        customerDb.update(customer);
+        customers = customerDb.read();
+        for (Customer c : customers) {
+            System.out.println(c);
+        }
     }
 }
